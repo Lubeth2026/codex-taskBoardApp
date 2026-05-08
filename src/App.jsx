@@ -21,14 +21,18 @@ function deleteTask(id){
 }
 //Toggle the Edit task from true/false//
 function toggleEdit(id){
-  setTasks(tasks.map((task)=> task.id === id ? {...task, editing: true} : task));
+  setTasks(tasks.map((task)=> (task.id === id ? {...task, editing: true} : task)),);
+}
+//Edit the task input newText//
+function updateTask(id, newText){
+  setTasks(tasks.map((task)=> task.id === id ? {...task, text: newText, editing: false} : task,),);
 }
 
   return (
      <div className='app'>
       <h1>Task Board!</h1>
       <TaskForm onAddTask={addTask}/>
-      <TaskList tasks={tasks} onDelete={deleteTask} onEdit={toggleEdit}/>
+      <TaskList tasks={tasks} onDelete={deleteTask} onEdit={toggleEdit} onUpdate={updateTask}/>
      </div>
   )
 }

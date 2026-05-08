@@ -15,15 +15,20 @@ function addTask(text, priority){
   setTasks([...tasks, newTask]);
 }
 console.log(tasks);
+
 function deleteTask(id){
   setTasks(tasks.filter((task)=> task.id !== id));
+}
+//Toggle the Edit task from true/false//
+function toggleEdit(id){
+  setTasks(tasks.map((task)=> task.id === id ? {...task, editing: true} : task));
 }
 
   return (
      <div className='app'>
       <h1>Task Board!</h1>
       <TaskForm onAddTask={addTask}/>
-      <TaskList tasks={tasks} onDelete={deleteTask}/>
+      <TaskList tasks={tasks} onDelete={deleteTask} onEdit={toggleEdit}/>
      </div>
   )
 }

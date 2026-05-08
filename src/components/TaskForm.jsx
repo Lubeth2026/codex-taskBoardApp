@@ -1,12 +1,15 @@
 
 import React, { useState } from 'react'
 
-function TaskForm() {
+function TaskForm({onAddTask}) {
       const [taskText, setTaskText] = useState("");
       const [taskPriority, setTaskPriority] = useState("Low");
 
 function handleSubmit(event){
     event.preventDefault();
+    onAddTask(taskText, taskPriority);
+    setTaskText("");
+    setTaskPriority("Low");
 }
 
   return (

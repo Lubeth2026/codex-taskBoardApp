@@ -15,12 +15,15 @@ function addTask(text, priority){
   setTasks([...tasks, newTask]);
 }
 console.log(tasks);
+function deleteTask(id){
+  setTasks(tasks.filter((task)=> task.id !== id));
+}
 
   return (
      <div className='app'>
       <h1>Task Board!</h1>
       <TaskForm onAddTask={addTask}/>
-      <TaskList tasks={tasks}/>
+      <TaskList tasks={tasks} onDelete={deleteTask}/>
      </div>
   )
 }

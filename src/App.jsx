@@ -20,8 +20,10 @@ function deleteTask(id){
   setTasks(tasks.filter((task)=> task.id !== id));
 }
 //Toggle the Edit task from true/false//
+//*BUG toggle: When editing input more than 1 task at the same time causes ERROR all inputs are editing at once*//
+//*BUG FIXED: ONLY allow 1 task input to be edited at a time*//
 function toggleEdit(id){
-  setTasks(tasks.map((task)=> (task.id === id ? {...task, editing: true} : task)),);
+  setTasks(tasks.map((task)=> (task.id === id ? {...task, editing: true} : {...task, editing: false})),);
 }
 //Edit the task input newText//
 function updateTask(id, newText){

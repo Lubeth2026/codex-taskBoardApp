@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import './App.css'
 import TaskForm from './components/TaskForm'
+import TaskList from './components/TaskList';
 
 function App() {
 //This will route the Data in the app//
@@ -19,6 +20,7 @@ console.log(tasks);
      <div className='app'>
       <h1>Task Board!</h1>
       <TaskForm onAddTask={addTask}/>
+      <TaskList tasks={tasks}/>
      </div>
   )
 }
